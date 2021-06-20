@@ -1,0 +1,69 @@
+SQL
+
+CREATE DATABASE testdatabase
+
+SHOW DATABASES
++--------------------+
+| Database           |
++--------------------+
+| employees          |
+| testdatabase       |
+|                    |
++--------------------+
+
+ use testdatabase;
+ create table TestDatabase
+    -> (Id int(11) unsigned auto_increment primary key not null,
+    -> FirstName varchar(25),
+    -> LastName varchar(25),
+    -> City varchar(25),
+    -> Country varchar(25)
+    -> );
+
+ show tables;
++------------------------+
+| Tables_in_testdatabase |
++------------------------+
+| persons                |
+| testdatabase           |
++------------------------+
+
+describe testdatabase;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| Id        | int unsigned | NO   | PRI | NULL    | auto_increment |
+| FirstName | varchar(25)  | YES  |     | NULL    |                |
+| LastName  | varchar(25)  | YES  |     | NULL    |                |
+| City      | varchar(90)  | YES  |     | NULL    |                |
+| Country   | varchar(25)  | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+
+ insert into testdatabase(FirstName,LastName,City,Country)
+    -> VALUES ('Ram','kumar','Stavanger','Norway');
+ 
+SELECT * FROM testdatabase;
++----+-----------+----------+-----------+---------+
+| Id | FirstName | LastName | City      | Country |
++----+-----------+----------+-----------+---------+
+|  1 | Ram       | kumar    | Stavanger | Norway  |
+|  2 | vikram    | gupta    | jaipur    | India   |
+|  3 | wilmam    | kala     | Helsinki  | Finland |
+|  4 | Mark      | Obama    | Seattle   | USA     |
+|  5 | Ganni     | Patric   | Walla     | Poland  |
++----+-----------+----------+-----------+---------+
+
+ alter table testdatabase add column PhoneNumber int(15)after lastname;
+
+ SELECT * FROM testdatabase;
++----+-----------+----------+-------------+-----------+---------+
+| Id | FirstName | LastName | PhoneNumber | City      | Country |
++----+-----------+----------+-------------+-----------+---------+
+|  1 | Ram       | kumar    |        NULL | Stavanger | Norway  |
+|  2 | vikram    | gupta    |        NULL | jaipur    | India   |
+|  3 | wilmam    | kala     |        NULL | Helsinki  | Finland |
+|  4 | Mark      | Obama    |        NULL | Seattle   | USA     |
+|  5 | Ganni     | Patric   |        NULL | Walla     | Poland  |
++----+-----------+----------+-------------+-----------+---------+
+
+

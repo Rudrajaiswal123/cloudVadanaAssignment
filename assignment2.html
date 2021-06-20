@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p>Click the button to locate where in the string a specifed value occurs.</p>
+
+<button onclick="myFunction()">Search</button>
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  
+  const str = prompt('Enter a sentence: ');
+  const chr = prompt('Enter a letter: ');
+  var n = str.indexOf(chr);
+  var result = "";
+  
+  if(n == -1) {
+     document.getElementById("demo").innerHTML =chr  + " letter does not exist in the sentence.";
+    }
+   else{
+  for (let i = n+1; i < str.length; i++) {
+  	result = result + str[i];
+}
+  document.getElementById("demo").innerHTML = result;
+}
+}
+
+
+</script>
+
+</body>
+</html>
